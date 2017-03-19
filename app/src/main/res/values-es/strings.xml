@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">seemovies</string>
-    <string name="title_lists">Listas</string>
-    <string name="title_discover">Descubrir</string>
+    <string name="title_lists">Categorias</string>
+    <string name="title_discover">Peliculas</string>
     <string name="title_profile">Perfil</string>
 
     <!-- Strings Actividad de Listas -->

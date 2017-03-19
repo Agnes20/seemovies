@@ -25,30 +25,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.navigation);
 
-        navigation.setOnNavigationItemSelectedListener
-                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment selectedFragment = null;
-                        int id = item.getItemId();
-                        switch (id){
+                        switch (item.getItemId()) {
                             case R.id.navigation_lists:
-                                fragment = ListsFragment.newInstance();
                                 break;
+
                             case R.id.navigation_discover:
 
                                 break;
+
                             case R.id.navigation_profile:
 
                                 break;
+
                         }
-                        final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                        transaction.replace(R.id.container, fragment).commit();
                         return true;
-        }
-    });
+                    }
+                });
     //Manually displaying the first fragment - one time only
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     transaction.replace(R.id.content, ListsFragment.newInstance());
