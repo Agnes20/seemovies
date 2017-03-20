@@ -32,7 +32,7 @@ import com.ines.seemovies.R;
 
 public class ListsFragment extends Fragment {
 
-    private TabLayout tabLayout;
+    private TabLayout tab_lists;
     private ViewPager viewPager;
 
     public static ListsFragment newInstance() {
@@ -48,7 +48,30 @@ public class ListsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_item_lists, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_item_lists, container, false);
 
-    }
+        tab_lists = (TabLayout) view.findViewById(R.id.tab_lists);
+
+        tab_lists.addTab(tab_lists.newTab().setText(R.string.title_generos));
+        tab_lists.addTab(tab_lists.newTab().setText(R.string.title_topics));
+
+        final ViewPager view_pager = (ViewPager) view.findViewById(R.id.viewpager);
+        /*final ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager(), tab_lists.getTabCount());
+                view_pager.setAdapter(adapter);
+
+    /*tab_lists.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+/*@Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                    view_pager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+          }
+           @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+          }
+
+
+    });*/
+        return view;
+    }}
