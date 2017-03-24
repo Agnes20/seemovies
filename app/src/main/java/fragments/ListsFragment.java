@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.ines.seemovies.R;
 
 public class ListsFragment extends Fragment {
@@ -50,28 +51,14 @@ public class ListsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_lists, container, false);
 
-        tab_lists = (TabLayout) view.findViewById(R.id.tab_lists);
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) getView().findViewById(R.id.viewpager);
+        viewPager.setAdapter(new TabsFragmentAdapter(getSupportFragmentManager()));
 
-        tab_lists.addTab(tab_lists.newTab().setText(R.string.title_generos));
-        tab_lists.addTab(tab_lists.newTab().setText(R.string.title_topics));
+        // Give the PagerSlidingTabStrip the ViewPager
+        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) getView().findViewById(R.id.tabs);
+        // Attach the view pager to the tab strip
+        tabsStrip.setViewPager(viewPager);
 
-        final ViewPager view_pager = (ViewPager) view.findViewById(R.id.viewpager);
-        /*final ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager(), tab_lists.getTabCount());
-                view_pager.setAdapter(adapter);
-
-    /*tab_lists.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-/*@Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                    view_pager.setCurrentItem(tab.getPosition());
-            }
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-          }
-           @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-          }
-
-
-    });*/
         return view;
     }}
